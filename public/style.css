@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Exo+2');
+
+:root {
+    --primary: #334455;
+    --white: ivory;
+    --white_dark: rgb(240, 240, 220);
+    --regular: lightgray;
+}
+
+body {
+    padding: 1em;
+    font-family: 'Exo 2', sans-serif;
+    background-color: var(--white);
+    color: var(--primary);
+}
+
+#itemTable, #itemTable th, #itemTable td {
+    border: 1px solid var(--regular);
+    border-collapse: collapse;
+    padding: 1em;
+}
+
+#itemTable tr {
+    position: relative;
+}
+
+#itemTable tr:nth-child(even) {
+    background-color: var(--white_dark);
+}
+
+#itemTable tr th:last-child, #itemTable tr td:last-child {
+    padding: 0px;
+    width: 0px;
+    border-style: none;
+}
+
+#itemTable tr th:nth-last-child(2), #itemTable tr td:nth-last-child(2) {
+    border-right-style: none;
+}
+
+.toolbar {
+    display: none;
+    
+    position: absolute;
+    right: 0.5em;
+    transform: translateY(-50%);
+
+    
+    padding: 0.2em;
+
+    border-radius: 1.2em;
+
+
+    align-items: center;
+    justify-content: space-around;
+
+
+    background-color: var(--regular);
+}
+
+.toolbarAnchor {
+    position: relative;
+}
+
+.toolbar i {
+    height: 1em;
+    width: 1em;
+    text-align: center;
+    font-size: 1em;
+    padding: 0.5em;
+    background-color: rgba(163, 163, 163,0);
+    border-radius: 1em;
+    transition: background-color 0.5s;
+}
+
+.toolbar i:hover {
+    cursor: pointer;
+    background-color: rgba(163, 163, 163,1);
+}
+
+tr:hover .toolbar {
+    display: flex;
+}
