@@ -6,6 +6,7 @@ var items = [
     {id: 2, name: 'Excalibur', description: 'Waiting for the true king and his strong arms.'},
     {id: 3, name: 'Horn of the Rohirrim', description: 'Deeeeaaaaath!!!'}    
 ];
+const Item = require('../models').Item;
 
 const router = express.Router();
 router.get('/', (req,res) => {
