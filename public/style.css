@@ -14,6 +14,11 @@ body {
     color: var(--primary);
 }
 
+
+#itemTable {
+    width: 100%;
+}
+
 #itemTable, #itemTable th, #itemTable td {
     border: 1px solid var(--regular);
     border-collapse: collapse;
@@ -62,7 +67,61 @@ body {
     position: relative;
 }
 
-.toolbar i {
+tr:hover .toolbar {
+    display: flex;
+}
+
+.button {
+    margin: 0.5em 0;
+    color: var(--primary);
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 1em;
+    background-color: var(--regular);
+    transition: background-color 0.5s;
+}
+
+.button:hover {
+    cursor: pointer;
+    background-color: rgba(163, 163, 163,1);
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+  
+#overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    position: relative;
+    /*height: 60%;*/
+    width: 50%;
+
+    
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+    background-color:  var(--white_dark);
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.iconButton {
     height: 1em;
     width: 1em;
     text-align: center;
@@ -73,11 +132,27 @@ body {
     transition: background-color 0.5s;
 }
 
-.toolbar i:hover {
+.iconButton:hover {
     cursor: pointer;
     background-color: rgba(163, 163, 163,1);
 }
 
-tr:hover .toolbar {
-    display: flex;
+.popup .iconButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    color: var(--primary);
+    text-decoration: none;
+}
+
+
+
+input[type='text'] {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--regular);
+    border-radius: 0.25em;
+    padding: 0.5em;
+    margin: 0.5em 0;
 }

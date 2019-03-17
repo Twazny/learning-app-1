@@ -10,9 +10,29 @@
     <title>Main page</title>
 </head>
 <body>
-    <h1>Main page.</h1>
+    <h1>Items</h1>
+    <div id="addNewItemButton" class='button'>Add new item</div>
     <table id='itemTable'>
-        <tr><th>id</th><th>name</th><th>description</th><th></th></tr>
+        <tr>
+            <th style="width:10%;">ID</th>
+            <th style="width:35%;">Name</th>
+            <th style="width:55%;">Description</th>
+            <th></th>
+        </tr>
     </table>
+
+    <div id="overlay">
+        <div class="popup">
+            <h3>Add new item</h2>
+            <i id="popupClose" class="iconButton fa fa-close"></i>
+            <form id="addNewItemForm" action="" method="POST">
+                <label for="name" >Name</label><br>
+                <input type="text" name="name" placeholder="Type name for a new item..." required><br>
+                <label for="name">Description</label><br>
+                <input type="text" name="description" placeholder="Enter short description..."><br>
+                <input class="button" type="submit" value="Add"><br>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

@@ -1,8 +1,10 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('DATABASE',{
+const sequelize = new Sequelize('DATABASE','','',{
     dialect: 'sqlite',
-    storage: '../db/DATABASE.sqlite'
+    storage: './db/DATABASE.sqlite'
 });
 
-sequelize.import(__dirname + 'items.js');
+sequelize.import(__dirname + '/items.js');
+sequelize.sync();
+module.exports = sequelize;

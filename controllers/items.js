@@ -1,26 +1,37 @@
 const express = require('express');
 
-var items = [
-    {id: 0, name: 'Sword of destiny', description: 'Sword of destiny has two edges. One of them is you.'},
-    {id: 1, name: 'Boots of heist', description: 'Watch out for these. Will take you on a long journey.'},
-    {id: 2, name: 'Excalibur', description: 'Waiting for the true king and his strong arms.'},
-    {id: 3, name: 'Horn of the Rohirrim', description: 'Deeeeaaaaath!!!'}    
-];
-const Item = require('../models').Item;
+
+const Item = require('../models').models.Item;
 
 const router = express.Router();
 router.get('/', (req,res) => {
-    res.json(items);
+    Item.findAll({
+        attributes: ['id', 'name', 'description']
+    }).then((items) => {
+        res.json(items);
+    });
 });
 
-router.get('/:id', (req,res) => {
-    const id = req.params.id;
-    const item = items.find((i) => { return parseInt(i.id) == id});
-    res.json(item);
-});
 
 router.post('/', (req,res) => {
-    items.push(req.body);
-})
+    Item.create(req.body).then((item) => {
+        res.json(item);
+    }).catch((err) => {
+        console.log(err);
+    });
+});
+
+router.delete('/:id', (req,res) => {
+    Item.destroy({
+        force: true,
+        where: {
+            id: req.params.id
+        }
+    }).then((item) => {
+        res.json(item);
+    }).catch((err) => {
+        console.log(err);
+    });
+});
 
 module.exports = router;
