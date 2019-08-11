@@ -16,6 +16,7 @@ let database = new sqlite3.Database('./db/DATABASE.sqlite',(err) => {
     app.use(express.static('./public'));
     app.use(bodyParser.json());
     app.use('/api/items/', require('./controllers/items'));
+    app.use('/calculations/', require('./controllers/calculations'));
 
     app.listen(port, () => console.log(`Server started listening on port ${port}.`));
 
