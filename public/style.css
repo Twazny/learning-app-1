@@ -14,6 +14,26 @@ body {
     color: var(--primary);
 }
 
+section {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 1em;
+}
+
+#content {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 'items_list item_details' 'items_list item_details';
+    grid-column-gap: 1em;
+}
+
+#itemsList {
+    grid-area: items_list;
+}
+
+#itemDetails {
+    grid-area: item_details;
+}
 
 #itemTable {
     width: 100%;
@@ -22,7 +42,7 @@ body {
 #itemTable, #itemTable th, #itemTable td {
     border: 1px solid var(--regular);
     border-collapse: collapse;
-    padding: 1em;
+    padding: 0.75em;
 }
 
 #itemTable tr {
@@ -30,7 +50,7 @@ body {
 }
 
 #itemTable tr:nth-child(even) {
-    background-color: var(--white_dark);
+    /*background-color: var(--white_dark);*/
 }
 
 #itemTable tr th:last-child, #itemTable tr td:last-child {
