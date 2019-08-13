@@ -19,11 +19,15 @@ section {
     padding: 1em;
 }
 
+section h2 {
+    margin: 0.25em 0;
+}
+
 #content {
     display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    grid-template-areas: 'items_list item_details' 'items_list item_details';
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 100%;
+    grid-template-areas: 'items_list item_details';
     grid-column-gap: 1em;
 }
 
@@ -48,11 +52,11 @@ section {
 #itemTable tr {
     position: relative;
 }
-
+/*
 #itemTable tr:nth-child(even) {
-    /*background-color: var(--white_dark);*/
+    background-color: var(--white_dark);
 }
-
+*/
 #itemTable tr th:last-child, #itemTable tr td:last-child {
     padding: 0px;
     width: 0px;
