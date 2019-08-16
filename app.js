@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3');
+const ws = require('ws');
+//const Math = require('Math');
 
 const port = process.env.port || 3000;
 
@@ -9,6 +11,20 @@ let database = new sqlite3.Database('./db/DATABASE.sqlite',(err) => {
       console.error(err.message);
     }
 
+    console.log(Math.random());
+
+    const wsServer = new ws.Server({ port: 8080 });
+    wsServer.on('connection', function connection(ws) {
+      console.log ('web socket connected!');
+      
+      
+      ws.on('message', function incoming(message) {
+        console.log('received: %s', message);
+      });
+      
+    
+      ws.send('something');
+    });
 
     const app = express();
 

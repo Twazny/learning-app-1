@@ -10,6 +10,12 @@ if (
 
 function script() {
 
+    //
+    const websocket = new WebSocket('ws://' + window.location.hostname + ':8080');
+    websocket.onopen = function (event) {
+        websocket.send("Client data"); 
+    };
+
     //Callback install
     const addNewItemButton = document.getElementById('addNewItemButton');
     const popupClose = document.getElementById('popupClose');
