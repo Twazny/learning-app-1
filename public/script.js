@@ -10,10 +10,15 @@ if (
 
 function script() {
 
-    //
+    //websocket client init
     const websocket = new WebSocket('ws://' + window.location.hostname + ':8080');
     websocket.onopen = function (event) {
-        websocket.send("Client data"); 
+        websocket.send("Client data");
+        const randomLabel = document.getElementById('random'); 
+        websocket.onmessage = function (event) {
+            let { data } = event;
+            randomLabel.innerText = data;
+        }
     };
 
     //Callback install
@@ -87,6 +92,9 @@ function script() {
     });
 }
 
+function onSensorData (data) {
+    
+}
 
 function appendItemRecord(item) {
     const newRow = itemTable.insertRow();

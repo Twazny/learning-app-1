@@ -11,7 +11,6 @@ let database = new sqlite3.Database('./db/DATABASE.sqlite',(err) => {
       console.error(err.message);
     }
 
-    console.log(Math.random());
 
     const wsServer = new ws.Server({ port: 8080 });
     wsServer.on('connection', function connection(ws) {
@@ -22,8 +21,12 @@ let database = new sqlite3.Database('./db/DATABASE.sqlite',(err) => {
         console.log('received: %s', message);
       });
       
+      setInterval(() => {
+        //console.log('time');
+        let num = Math.random();
+        ws.send(num);
+      },1000);
     
-      ws.send('something');
     });
 
     const app = express();
