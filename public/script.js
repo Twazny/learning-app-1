@@ -10,6 +10,39 @@ if (
 
 function script() {
 
+    let datapoints = [];
+    let datapoints_ct = 0
+    const canvas = document.getElementById('mainCanvas');
+    const c_height = 300;
+    const c_width = 700;
+
+    canvas.height = c_height;
+    canvas.width = c_width;
+    const ctx = canvas.getContext('2d');
+    function onSensorData (data) {
+        datapoints_ct = datapoints.push(data);
+        if (datapoints_ct > 20) {
+            datapoints.shift();
+        }
+        
+        let step = c_width / datapoints_ct;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        let curr_x = 0;
+        datapoints.forEach((value, index) => {
+            let scaled_value = value * c_height;
+            if (index == 0) {
+                ctx.moveTo(0, scaled_value);
+            } else {
+                curr_x += step;
+                ctx.lineTo(curr_x, scaled_value);
+            }
+        });
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = '#00b2c9';
+        ctx.stroke();
+    }
+
     //websocket client init
     const websocket = new WebSocket('ws://' + window.location.hostname + ':8080');
     websocket.onopen = function (event) {
@@ -18,6 +51,7 @@ function script() {
         websocket.onmessage = function (event) {
             let { data } = event;
             randomLabel.innerText = data;
+            onSensorData(data);
         }
     };
 
@@ -92,9 +126,7 @@ function script() {
     });
 }
 
-function onSensorData (data) {
-    
-}
+
 
 function appendItemRecord(item) {
     const newRow = itemTable.insertRow();

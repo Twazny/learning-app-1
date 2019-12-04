@@ -36,6 +36,10 @@ section h2 {
     grid-area: items_list;
 }
 
+#mainCanvas {
+    border: 1px solid var(--regular);
+}
+
 #itemDetails {
     grid-area: item_details;
 }

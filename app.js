@@ -25,7 +25,7 @@ let database = new sqlite3.Database('./db/DATABASE.sqlite',(err) => {
         //console.log('time');
         let num = Math.random();
         ws.send(num);
-      },1000);
+      },3000);
     
     });
 
